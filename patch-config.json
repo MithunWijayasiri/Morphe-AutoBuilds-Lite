@@ -9,6 +9,7 @@
     { "app_name": "printrest", "source": "adobo" },
     { "app_name": "soundcloud", "source": "hoo" },
     { "app_name": "lyfta", "source": "hoo" },
+    { "app_name": "camscanner", "source": "hoo" },
     { "app_name": "macrofactor", "source": "hoo" },
     { "app_name": "macrofactor-workout", "source": "hoo" },
     { "app_name": "mirinae", "source": "hoo" },
