@@ -314,11 +314,19 @@ def make_manifest_key(app: str, source: str, arch: str) -> str:
     return f"{app}|{source}|{arch}"
 
 
+def _is_unreliable_source_sig(sig: str) -> bool:
+    s = (sig or "").lower()
+    return (
+        "@err:" in s
+        or "@badjson:" in s
+    )
+
+
+
 def plan_incremental(full_matrix: List[dict], old_manifest: Optional[dict],
                      existing_apks: List[str]) -> Tuple[List[dict], List[str], dict]:
     """Decide which entries need rebuilding.
     Returns (build_matrix, carry_over_apks, new_manifest_entries)."""
-    old_entries = (old_manifest or {}).get("entries", {}) if isinstance(old_manifest, dict) else {}
     existing_apk_set = set(existing_apks)
 
     build_matrix: List[dict] = []
@@ -333,6 +341,10 @@ def plan_incremental(full_matrix: List[dict], old_manifest: Optional[dict],
 
         cur_app_ver = load_app_config_version(app)            # '' if 'latest'
         cur_src_sig = get_source_signature(src)
+        old = old_entries.get(mkey)
+        old_src_sig = (old or {}).get("source_sig", "")
+        if old and old_src_sig and _is_unreliable_source_sig(cur_src_sig):
+            cur_src_sig = old_src_sig
 
         new_entries[mkey] = {
             "app_name": app,
@@ -348,7 +360,6 @@ def plan_incremental(full_matrix: List[dict], old_manifest: Optional[dict],
         reasons: List[str] = []
         if FORCE_FULL:
             reasons.append("force-rebuild")
-        old = old_entries.get(mkey)
         if not old:
             reasons.append("new-entry")
         else:
