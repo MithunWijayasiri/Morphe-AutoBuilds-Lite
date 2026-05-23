@@ -15,9 +15,6 @@ def main() -> int:
     print(f"  GITHUB_ACTIONS: {os.environ.get('GITHUB_ACTIONS')}", file=sys.stderr)
     print(f"  GITHUB_REPOSITORY: {repo_slug}", file=sys.stderr)
     print(f"  Token present: {'Yes' if token else 'No'}", file=sys.stderr)
-    if token:
-        print(f"  Token length: {len(token)}", file=sys.stderr)
-        print(f"  Token prefix: {token[:4]}...", file=sys.stderr)
 
     if not token:
         print(
@@ -45,11 +42,6 @@ def main() -> int:
     if api.returncode != 0:
         print("GitHub auth validation failed: gh api rate_limit failed", file=sys.stderr)
         print(api.stderr.strip() or api.stdout.strip(), file=sys.stderr)
-        
-        # If we are in Actions, we might still want to continue if it's just a flake
-        if is_github_actions:
-            print("Warning: Continuing despite API failure in GitHub Actions environment", file=sys.stderr)
-            return 0
         return 1
 
     try:
