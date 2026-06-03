@@ -175,7 +175,32 @@ def _fetch_github_signature(user: str, repo: str, tag: str) -> str:
 
     tag_name = rel.get("tag_name") or rel.get("name") or "?"
     published = rel.get("published_at") or rel.get("created_at") or "?"
-    return f"{tag_name}@{published}"
+    updated = rel.get("updated_at") or ""
+
+    # Some upstream projects update/re-upload release assets without bumping the
+    # release tag. In that case, published_at/tag_name may stay the same, so we
+    # also incorporate a deterministic "assets signature" to detect changes.
+    assets = rel.get("assets") or []
+    asset_parts: List[str] = []
+    if isinstance(assets, list):
+        for a in assets:
+            if not isinstance(a, dict):
+                continue
+            name = (a.get("name") or "").strip()
+            if not name:
+                continue
+            # Prefer strong identifiers when available.
+            digest = (a.get("digest") or "").strip()
+            a_updated = (a.get("updated_at") or "").strip()
+            size = str(a.get("size") or "").strip()
+            # Keep this compact but sensitive to real changes.
+            token = digest or f"{size}@{a_updated}" or a_updated or size
+            asset_parts.append(f"{name}:{token}")
+    asset_parts.sort()
+    assets_sig = ",".join(asset_parts)
+
+    # Format: <tag>@<published>@<updated>|<assets_sig>
+    return f"{tag_name}@{published}@{updated}|{assets_sig}"
 
 
 def _fetch_gitlab_signature(project: str, tag: str) -> str:
