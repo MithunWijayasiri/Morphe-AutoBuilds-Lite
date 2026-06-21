@@ -18,7 +18,7 @@ Build one app locally (Python 3.11+, JRE, `zip`, `apksigner` on PATH required):
 ```bash
 pip install -r requirements.txt
 APP_NAME="youtube" SOURCE="morphe" python -m src
-APP_NAME="youtube" SOURCE="morphe" ARCH="arm64-v8a" python -m src   # optional single-arch override
+APP_NAME="youtube" SOURCE="morphe" python -m src   # builds all arches from arch-config.json
 ```
 
 `python -m src` (entry: `src/__main__.py`) is the whole build unit. It reads `arch-config.json` itself and loops over every arch for the `(APP_NAME, SOURCE)` pair, so one invocation can emit multiple APKs. No test suite, no linter configured.
@@ -34,7 +34,7 @@ FORCE_FULL_REBUILD=true python scripts/check_app_updates.py
 
 Pipeline (`.github/workflows/patch.yml`), 6 stages:
 
-```
+```text
 download-tools → check-updates → patch-apps → build-apps (matrix) → create-single-release → cleanup
 ```
 

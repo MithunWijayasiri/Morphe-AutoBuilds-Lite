@@ -31,7 +31,7 @@ Edit `sources/<source>.json` (`tag`, `user`/`repo`/`project`, or `bundle_url`). 
 
 ## Pipeline stages (`patch.yml`)
 
-```
+```text
 download-tools → check-updates → patch-apps → build-apps (matrix) → create-single-release → cleanup
 ```
 
