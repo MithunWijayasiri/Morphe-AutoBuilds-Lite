@@ -16,16 +16,6 @@ Automated pipeline that builds patched APKs for 60+ Android apps using the ReVan
 
 ---
 
-## Quick Downloads
-
-All APKs rebuilt daily at 06:00 UTC.
-
-| Mirror | Link |
-| :--- | :--- |
-| **GitHub Releases** | [Download Latest](https://github.com/MithunWijayasiri/Morphe-AutoBuilds/releases/latest) |
-
----
-
 ## Features
 
 - **Fully automated.** GitHub Actions cron runs daily — zero intervention.
