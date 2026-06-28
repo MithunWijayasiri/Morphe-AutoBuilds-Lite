@@ -1,0 +1,50 @@
+name: PR Lint
+
+on:
+  pull_request:
+    paths:
+      - "**.json"
+      - "patches/*.txt"
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON files
+        run: |
+          failed=0
+          for f in arch-config.json patch-config.json sources/*.json apps/**/*.json; do
+            [ -f "$f" ] || continue
+            python -m json.tool "$f" > /dev/null 2>&1 || {
+              echo "::error file=$f::Invalid JSON"
+              python -m json.tool "$f" 2>&1 | tail -5
+              failed=1
+            }
+          done
+          exit $failed
+
+  validate-patches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate patch files
+        run: |
+          failed=0
+          for f in patches/*.txt; do
+            [ -f "$f" ] || continue
+            line_num=0
+            while IFS= read -r line; do
+              line_num=$((line_num + 1))
+              # Skip empty lines and comments
+              [[ -z "$line" || "$line" == \#* ]] && continue
+              # Non-empty, non-comment lines must start with + or -
+              if [[ "$line" != +* && "$line" != -* ]]; then
+                echo "::error file=$f,line=$line_num::Line must start with + or -: $line"
+                failed=1
+              fi
+            done < "$f"
+          done
+          exit $failed
