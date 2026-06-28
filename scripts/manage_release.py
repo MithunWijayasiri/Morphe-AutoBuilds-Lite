@@ -14,13 +14,14 @@ def get_app_versions():
                 with open(config_file, 'r') as f:
                     config = json.load(f)
                 app_name = os.path.basename(config_file).replace('.json', '')
-                if app_name not in versions:
-                    versions[app_name] = {
+                key = (app_name, platform)
+                if key not in versions:
+                    versions[key] = {
                         'version': config.get('version', 'latest'),
                         'source': platform,
                     }
-            except Exception:
-                pass
+            except (OSError, json.JSONDecodeError) as exc:
+                print(f"Warning: skipping {config_file}: {exc}")
 
     return versions
 
@@ -39,13 +40,12 @@ def create_release_notes():
         app_name = app_config['app_name']
         source = app_config['source']
         
-        if app_name in versions:
-            version_info = versions[app_name]
-            notes += f"### {app_name.replace('-', ' ').title()} ({source})\n"
+        version_info = versions.get((app_name, source))
+        notes += f"### {app_name.replace('-', ' ').title()} ({source})\n"
+        if version_info:
             notes += f"- **Version:** `{version_info['version']}`\n"
             notes += f"- **Source:** {version_info['source']}\n\n"
         else:
-            notes += f"### {app_name.replace('-', ' ').title()} ({source})\n"
             notes += "- **Version:** `latest`\n\n"
     
     notes += "---\n\n"
