@@ -36,8 +36,7 @@ Patched APKs for 60+ Android apps — built daily, no root required.
 | Ad-free, background play, SponsorBlock | YouTube |
 | Ad-free, background play | YouTube Music |
 | Ad-free, download media | Instagram |
-| Ad-free | TikTok, Soundcloud, Threads, Reddit, Tumblr, Pinterest, Messenger, Google News, WPS Office, Meme Generator |
-| Unlimited hearts, no ads | Duolingo |
+| Ad-free | TikTok, Soundcloud, Threads, Reddit, Tumblr, Pinterest, Google News, WPS Office, Meme Generator |
 | Remove watermark | CamScanner, XRecorder, VN Video Editor |
 | Unlock features | Telegram |
 | Unlock pro / VIP | Niagara Launcher, Letterboxd, Trakt |
