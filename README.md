@@ -6,7 +6,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/MithunWijayasiri/Morphe-AutoBuilds?style=for-the-badge&label=Latest%20Release&color=0366d6)](https://github.com/MithunWijayasiri/Morphe-AutoBuilds/releases/latest)
 [![License](https://img.shields.io/github/license/MithunWijayasiri/Morphe-AutoBuilds?style=for-the-badge&color=orange)](LICENSE)
 
-Patched APKs for 60+ Android apps — built daily, no root required.
+Patched APKs for 50+ Android apps — built daily, no root required.
 
 [![Download Latest](https://img.shields.io/badge/Download%20Latest-0A0A0A?style=flat&logo=github&logoColor=white)](https://github.com/MithunWijayasiri/Morphe-AutoBuilds/releases/latest)
 [![Report Bug](https://img.shields.io/badge/Report%20Bug-0A0A0A?style=flat&logo=github&logoColor=white)](https://github.com/MithunWijayasiri/Morphe-AutoBuilds/issues)
@@ -31,17 +31,16 @@ Patched APKs for 60+ Android apps — built daily, no root required.
 
 ## Available apps
 
-| What's patched | Apps |
-| :--- | :--- |
-| Ad-free, background play, SponsorBlock | YouTube |
-| Ad-free, background play | YouTube Music |
-| Ad-free, download media | Instagram |
-| Ad-free | TikTok, Soundcloud, Threads, Reddit, Tumblr, Pinterest, Google News, Meme Generator |
-| Remove watermark | CamScanner, XRecorder, VN Video Editor |
-| Unlock features | Telegram |
-| Unlock pro / VIP | Niagara Launcher, Letterboxd, Trakt |
-| Unlock premium | Pandora, Pixiv, Photomath, Busuu, Mimo, Lingory, Eggbun, Teuida, TTMIK Stories, Pydroid, Webster, MacroFactor, MacroFactor Workout, Hevy, Strava, MyFitnessPal, SnorelLab, Lyfta, TickTick, MacroDroid, Xodo, RAR, Solid Explorer, Smart Launcher, ibisPaint, Prompter, Alarmo, Lumina, Mirinae, Document Scanner, Splitwise, My Expenses, Chargeprice, Windy, Ventusky, Komoot, Mapy, Geocaching, Fotmob, Crex, ProtonMail, ProtonVPN, Fing, Eyecon, Flatastic, Wallcraft, Avocards, Podcast |
-| Enhanced dialer | Phone / Dialer |
+| What's patched                         | Apps                                                                                                                                                                                                                                                                                                                                                                          |
+| :------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ad-free, background play, SponsorBlock | YouTube                                                                                                                                                                                                                                                                                                                                                                       |
+| Ad-free, background play               | YouTube Music                                                                                                                                                                                                                                                                                                                                                                 |
+| Ad-free, download media                | Instagram                                                                                                                                                                                                                                                                                                                                                                     |
+| Ad-free                                | TikTok, Soundcloud, Threads, Reddit, Pinterest, Google News, Meme Generator                                                                                                                                                                                                                                                                                                   |
+| Remove watermark                       | CamScanner, VN Video Editor                                                                                                                                                                                                                                                                                                                                                   |
+| Unlock features                        | Telegram                                                                                                                                                                                                                                                                                                                                                                      |
+| Unlock pro / VIP                       | Niagara Launcher, Trakt                                                                                                                                                                                                                                                                                                                                                       |
+| Unlock premium                         | Pixiv, Photomath, Busuu, Mimo, Lingory, Teuida, MacroFactor, MacroFactor Workout, Hevy, Strava, MyFitnessPal, SnoreLab, TickTick, MacroDroid, Xodo, Solid Explorer, Smart Launcher, ibisPaint, Alarmo, Lumina, Mirinae, Document Scanner, Splitwise, My Expenses, Windy, Ventusky, Komoot, Mapy, Geocaching, ProtonMail, ProtonVPN, Eyecon, Wallcraft, Avocards, Podcast, RAR |
 
 ## Disclaimer
 
