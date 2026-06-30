@@ -1,6 +1,6 @@
 <div align="center">
 
-# Morphe AutoBuilds
+# Morphe AutoBuilds Lite
 
 [![Daily Build](https://img.shields.io/github/actions/workflow/status/MithunWijayasiri/Morphe-AutoBuilds/patch.yml?label=Daily%20Build&style=for-the-badge&color=2ea44f)](https://github.com/MithunWijayasiri/Morphe-AutoBuilds/actions/workflows/patch.yml)
 [![Latest Release](https://img.shields.io/github/v/release/MithunWijayasiri/Morphe-AutoBuilds?style=for-the-badge&label=Latest%20Release&color=0366d6)](https://github.com/MithunWijayasiri/Morphe-AutoBuilds/releases/latest)
