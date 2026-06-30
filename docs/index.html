@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Morphe AutoBuilds Lite — Patched APKs, rolling.</title>
 <meta name="description" content="Patched APKs for 50+ Android apps — ad-free, premium unlocked, no root required. Rolling release, multi-architecture, consistently signed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -734,11 +736,20 @@
 
   function animateCounter(el, target, suffix, duration) {
     const start = performance.now();
+    el.textContent = '';
+    const numNode = document.createTextNode('0');
+    el.appendChild(numNode);
+    if (suffix) {
+      const suffixEl = document.createElement('span');
+      suffixEl.className = 'suffix';
+      suffixEl.textContent = suffix;
+      el.appendChild(suffixEl);
+    }
     function tick(now) {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const value = Math.round(eased * target);
-      el.innerHTML = value + (suffix ? '<span class="suffix">' + suffix + '</span>' : '');
+      numNode.textContent = value;
       if (progress < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
