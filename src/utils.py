@@ -288,11 +288,6 @@ def get_supported_versions(package_name: str, cli: str, patches: str) -> list[st
     return versions
 
 
-def get_supported_version(package_name: str, cli: str, patches: str) -> Optional[str]:
-    """Backwards compatible helper: returns the highest compatible version, if any."""
-    versions = get_supported_versions(package_name, cli, patches)
-    return versions[0] if versions else None
-
 def extract_filename(response, fallback_url=None) -> str:
     cd = response.headers.get('content-disposition')
     if cd:
@@ -522,11 +517,3 @@ def detect_github_release(user: str, repo: str, tag: str) -> dict:
             
             logging.error(f"Error fetching release {tag} for {user}/{repo} after {max_retries} attempts: {e}")
             raise
-
-def detect_source_type(cli_file: Path, patches_file: Path) -> str:
-    """Detect if we're using Morphe or ReVanced based on downloaded files"""
-    if cli_file and "morphe" in cli_file.name.lower() and patches_file and patches_file.suffix == ".mpp":
-        return "morphe"
-    elif cli_file and "revanced" in cli_file.name.lower() and patches_file and patches_file.suffix in [".jar", ".rvp"]:
-        return "revanced"
-    return "unknown"
